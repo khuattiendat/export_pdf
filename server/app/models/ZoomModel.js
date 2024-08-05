@@ -23,5 +23,5 @@ const ZoomSchema = mongoose.Schema({
 }, {
     timestamps: true
 })
-const Zoom = mongoose.model('Zoom', ZoomSchema);
-module.exports = Zoom;
+const ZoomModel = mongoose.model('Zoom', ZoomSchema);
+module.exports = ZoomModel;

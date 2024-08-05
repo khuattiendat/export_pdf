@@ -1,4 +1,4 @@
-const ZoomModel = require('../models/Zoom');
+const ZoomModel = require('../models/ZoomModel');
 const addZoom = async (data) => {
     try {
         if (!data.name || !data.address || !data.acreage || !data.capacity || !data.pricePerSession) {
