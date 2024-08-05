@@ -1,4 +1,4 @@
-const ServiceModel = require('../models/serviceModel');
+const ServiceModel = require('../models/ServiceModel');
 const addService = async (service) => {
     try {
         if (!service.name) return {message: 'Service name is required', error: true}

@@ -1,4 +1,4 @@
-const CustomerModel = require('../models/customerModel');
+const CustomerModel = require('../models/CustomerModel');
 const addCustomer = async (customer) => {
     try {
         const generateCode = () => {
