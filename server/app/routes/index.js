@@ -3,7 +3,6 @@ const router = express.Router();
 const OrderController = require('../controllers/OrderController');
 const ZoomController = require('../controllers/ZoomController');
 const ServiceController = require('../controllers/ServiceController');
-
 router.get('/', (req, res) => {
     res.send('Hello World');
 })

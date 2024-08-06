@@ -14,7 +14,6 @@ app.use(cors({
     origin: process.env.CLIENT_URL,
     credentials: true,
 }));
-
 //router
 app.use('/api', router);
 // connect db

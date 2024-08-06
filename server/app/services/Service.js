@@ -2,13 +2,11 @@ const ServiceModel = require('../models/ServiceModel');
 const addService = async (service) => {
     try {
         if (!service.name) return {message: 'Service name is required', error: true}
-        if (!service.price) return {message: 'Service price is required', error: true}
         if (!service.unit) return {message: 'Service unit is required', error: true}
         const newService = await new ServiceModel({
             name: service.name,
             description: service.description,
             unit: service.unit,
-            price: service.price,
         })
         const saveService = await newService.save();
         return {
