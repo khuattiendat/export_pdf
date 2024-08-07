@@ -43,7 +43,75 @@ const getAllZoom = async () => {
         }
     }
 }
+const getZoomById = async (id) => {
+    try {
+        const zoom = await ZoomModel.findById(id);
+        return {
+            data: zoom,
+            error: false
+        }
+    } catch (error) {
+        return {
+            message: error.message || error,
+            error: true
+        }
+    }
+
+}
+const updateZoom = async (id, data) => {
+    try {
+        const zoom = await ZoomModel.findById(id);
+        if (!zoom) {
+            return {
+                message: 'Zoom not found',
+                error: true
+            }
+        }
+        if (data.name) zoom.name = data.name;
+        if (data.address) zoom.address = data.address;
+        if (data.acreage) zoom.acreage = data.acreage;
+        if (data.capacity) zoom.capacity = data.capacity;
+        if (data.pricePerSession) zoom.pricePerSession = data.pricePerSession;
+        const zoomUpdated = await zoom.save();
+        return {
+            data: zoomUpdated,
+            error: false
+        }
+    } catch (error) {
+        return {
+            message: error.message || error,
+            error: true
+        }
+    }
+
+}
+const deleteZoom = async (id) => {
+    try {
+        const zoom = await ZoomModel.findById(id);
+        if (!zoom) {
+            return {
+                message: 'Zoom not found',
+                error: true
+            }
+        }
+        const zoomDeleted = await zoom.deleteOne();
+        return {
+            message: 'Zoom deleted successfully',
+            data: zoomDeleted,
+            error: false
+        }
+    } catch (error) {
+        return {
+            message: error.message || error,
+            error: true
+        }
+    }
+
+}
 module.exports = {
     addZoom,
-    getAllZoom
+    getAllZoom,
+    getZoomById,
+    updateZoom,
+    deleteZoom
 }

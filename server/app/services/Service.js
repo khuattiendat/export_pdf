@@ -36,7 +36,61 @@ const getAllService = async () => {
         }
     }
 }
+const getServiceById = async (id) => {
+    try {
+        const service = await ServiceModel.findById(id);
+        return {
+            data: service,
+            error: false
+        }
+    } catch (error) {
+        return {
+            message: error.message || error,
+            error: true
+        }
+    }
+}
+const updateService = async (id, data) => {
+    try {
+        const service = await ServiceModel.findById(id);
+        if (!service) return {message: 'Service not found', error: true}
+        if (data.name) service.name = data.name;
+        service.description = data.description;
+        if (data.unit) service.unit = data.unit;
+        const saveService = await service.save();
+        return {
+            message: 'Service updated successfully',
+            data: saveService,
+            error: false
+        }
+    } catch (error) {
+        return {
+            message: error.message || error,
+            error: true
+        }
+    }
+}
+const deleteService = async (id) => {
+    try {
+        const service = await ServiceModel.findById(id);
+        if (!service) return {message: 'Service not found', error: true}
+        const deleteService = await service.deleteOne();
+        return {
+            message: 'Service deleted successfully',
+            data: deleteService,
+            error: false
+        }
+    } catch (error) {
+        return {
+            message: error.message || error,
+            error: true
+        }
+    }
+}
 module.exports = {
     addService,
-    getAllService
+    getAllService,
+    getServiceById,
+    updateService,
+    deleteService
 }
