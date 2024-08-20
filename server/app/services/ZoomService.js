@@ -1,7 +1,7 @@
 const ZoomModel = require('../models/ZoomModel');
 const addZoom = async (data) => {
     try {
-        if (!data.name || !data.address || !data.acreage || !data.capacity || !data.pricePerSession) {
+        if (!data.name || !data.address || !data.acreage || !data.capacity || !data.pricePerSession_weekday || !data.pricePerSession_weekend) {
             return {
                 message: 'Missing required fields',
                 error: true
@@ -12,7 +12,8 @@ const addZoom = async (data) => {
             address: data.address,
             acreage: data.acreage,
             capacity: data.capacity,
-            pricePerSession: data.pricePerSession
+            pricePerSession_weekday: data.pricePerSession_weekday,
+            pricePerSession_weekend: data.pricePerSession_weekend
         })
         const zoomSaved = await newZoom.save();
         return {
@@ -71,7 +72,8 @@ const updateZoom = async (id, data) => {
         if (data.address) zoom.address = data.address;
         if (data.acreage) zoom.acreage = data.acreage;
         if (data.capacity) zoom.capacity = data.capacity;
-        if (data.pricePerSession) zoom.pricePerSession = data.pricePerSession;
+        if (data.pricePerSession_weekday) zoom.pricePerSession_weekday = data.pricePerSession_weekday;
+        if (data.pricePerSession_weekend) zoom.pricePerSession_weekend = data.pricePerSession_weekend;
         const zoomUpdated = await zoom.save();
         return {
             data: zoomUpdated,

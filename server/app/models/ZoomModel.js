@@ -16,7 +16,11 @@ const ZoomSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    pricePerSession: { // Giá cho mỗi ca thuê
+    pricePerSession_weekday: { // Giá cho mỗi ca thuê ngay thuong
+        type: Number,
+        required: true
+    },
+    pricePerSession_weekend: { // Giá cho mỗi ca thuê cuoi tuan
         type: Number,
         required: true
     },
