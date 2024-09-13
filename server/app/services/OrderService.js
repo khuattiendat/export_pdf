@@ -18,6 +18,7 @@ const addOrder = async (data, customerId) => {
             date: data.date,
             startTime: data.startTime,
             endTime: data.endTime,
+            priceZoom: data.priceZoom,
             orderDetail: data.orderDetail,
             totalMoney: data.totalMoney,
             totalVat: data.totalVat,

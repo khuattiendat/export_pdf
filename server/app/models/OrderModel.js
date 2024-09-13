@@ -55,6 +55,9 @@ const OrderSchema = mongoose.Schema({
         type: Number,
         required: true
     },
+    priceZoom: {
+        type: Number,
+    }
 }, {
     timestamps: true
 })
